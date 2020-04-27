@@ -1,0 +1,140 @@
+:root {
+    /* Colors */
+    --background: #ffffff;
+    --primary-color: #000000;
+}
+body{
+    font-family: 'Inter', Helvetica, Arial,sans-serif;
+    font-size: 13px;
+    padding: 0;
+    margin:0;
+    line-height: 140%;
+    background: var(--background);
+    color: var(--primary-color);
+}
+section{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 24px;
+    grid-row-gap: 0px;
+    width: 100vw;
+    height:100vh;
+    max-width: 960px;
+    margin:0 auto;
+}
+div.logo{
+    grid-column:  1 / 13;
+    display: block;
+    position: relative;
+    height: auto;
+}
+div.bar{
+    
+}
+hr{
+    display: block;
+    height: 8px;
+    outline: none;
+    border: 0;;
+    background: #EE7868;
+    margin:0;
+}
+img{
+    transform: translateY(-30px) translateX(24px);
+    display: block;
+    width: 100%;
+}
+p,ul,div.bar{
+    grid-column: 7 / 11;
+    height: auto;
+}
+p.about{
+    align-self: end;
+}
+p.contact{
+    align-self: end;
+    margin-bottom: 24px;
+}
+ul{
+    list-style-type: disc;
+    margin-bottom: 48px;
+    line-height: 200%;
+    align-self: start;
+}
+li{
+    font-weight: 900;
+}
+strong{
+    font-weight: 900;
+}
+a{
+    color: var(--primary-color);
+}
+
+@media only screen and (min-width: 1681px) {
+
+}
+
+@media only screen and (min-width: 768px) and (max-width:1366px) {
+    body{
+        font-size: 13px;
+    }
+	 section{
+        height: 95vh;
+    }
+    div.logo img{
+        transform: translateX(48px);
+        width: 75%;
+    }
+    p,ul,div.bar{
+        grid-column: 6 / 11;
+
+    }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width:1366px) and (orientation:landscape) {
+	body{
+        font-size: 13px;
+    }
+	 section{
+        height: 90vh
+    }
+	div.logo img{
+        transform: translateX(48px) translateY(-16px);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+    body{
+        font-size: 14px;
+    }
+    section{
+        height: 90vh;
+    }
+    hr{
+        height: 4px;
+    }
+    div.logo{
+        grid-row: 2;
+        
+    }
+    div.logo img{
+        transform: translate(0,0,0);
+        width: 85%;
+    }
+    p,ul,div.bar{
+        grid-column: 2 / 12;
+
+    }
+    p.about{
+        grid-row: 3;
+    }
+    ul{
+        grid-row: 4;
+        margin-top: 24px;
+    }
+    p.contact{
+        
+    }
+
+}
