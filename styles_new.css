@@ -20,6 +20,7 @@ body {
   background: var(--background);
   font-size: var(--body);
   font-family: sans-serif;
+  line-height: 120%;
   -webkit-font-smoothing: antialiased;
   font-smooth: antialiased;
 }
@@ -76,7 +77,6 @@ ol.areas {
 ol.areas li {
   padding: 0 var(--grid-gap);
   height: 48px;
-  line-height: 48px;
   margin: 0 calc(var(--grid-gap) * -1);
   color: var(--primary-color-inverted);
   font-weight: 400;
@@ -85,8 +85,37 @@ ol.areas li {
   transform: translateZ(0);
   will-change: transform;
 }
+ol.areas li article{
+  opacity: 0;
+  transition: all 400ms cubic-bezier(.26,.52,.12,1.19) 0ms;
+  transform: translateY(100px);
+  position: relative;
+}
+ol.areas li a{
+  line-height: 48px;
+  display: block;
+  position: relative;
+  width: 100%;
+  transition: all 400ms cubic-bezier(.26,.52,.12,1.19) 100ms;
+}
 ol.areas li.expanded {
-  height: 400px;
+  height: calc(100dvh - 280px);
+}
+ol.areas li.expanded a{
+  font-size: 32px;
+  line-height: 72px;
+  position: relative;
+  transform: translate(0);
+}
+ol.areas li.expanded article{
+  opacity: 1;
+  transform: translate(0);
+  column-count: 2;
+  position: absolute;
+  bottom: var(--grid-gap);
+}
+ol.areas li.expanded article p{
+  margin-bottom: var(--grid-gap-medium);
 }
 ol.areas li a:first-child {
   text-decoration: none;
@@ -94,10 +123,10 @@ ol.areas li a:first-child {
   text-transform: lowercase;
   cursor: crosshair;
 }
-ol.areas li:last-child a {
+
+ol.areas li:last-child a{
   text-decoration: none;
-  display: block;
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 ol.areas li:nth-child(1) {
   background: var(--color1);
@@ -116,9 +145,18 @@ ol.areas li span:first-child {
   display: inline-block;
   padding-right: var(--grid-gap);
 }
+ol.areas li a:first-child .icon{
+  transform-origin: center center;
+  transform: rotate(0);
+}
+ol.areas li.expanded a:first-child .icon{
+  transform: rotate(45deg);
+}
 ol.areas li span.icon {
-  float: right;
   font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 footer.subgrid-container {
   display: grid;
