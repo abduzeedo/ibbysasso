@@ -225,10 +225,10 @@ footer a {
     transform: rotate(-90deg);
     transform-origin: left;
     position: fixed;
-    bottom: 208px;
-    left: 54px;
+    bottom: 224px;
+    left: 48px;
     grid-row: 1;
-    font-size: 110px;
+    font-size: 84px;
   }
   .about {
     font-size: 14px;
