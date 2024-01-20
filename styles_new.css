@@ -3,7 +3,6 @@
   --grid-gap-small: 8px;
   --grid-gap-medium: 16px;
   --grid-gap: 24px;
-
   --background: #f5eee7;
   --primary-color: #000000;
   --primary-color-inverted: #fff;
@@ -44,19 +43,21 @@ h1 {
   padding-top: var(--grid-gap);
   grid-row: 1;
   font-size: 24px;
+  line-height: 24px;
   font-weight: bold;
+  text-transform: lowercase;
 }
 .about {
   padding-top: var(--grid-gap);
   grid-row: 1;
-  grid-column: 3 / span 2;
+  grid-column: 3 / span all;
   font-size: min(max(12px, 1.5vmin), 20px);
   line-height: 120%;
 }
 h2.headline {
   grid-row: 2;
   grid-column: 1 / span all;
-  font-size: ;
+
   font-size: min(max(12px, 22vw), 260px);
   line-height: 100%;
   font-weight: bold;
@@ -68,10 +69,12 @@ h2.headline {
   grid-row: 3;
   grid-column: 1 / span all;
   position: relative;
+  margin: -8px;
 }
 ol.areas {
   position: absolute;
-  width: 100%;
+  left: 0;
+  right: 0;
   bottom: var(--grid-gap-medium);
 }
 ol.areas li {
@@ -84,12 +87,7 @@ ol.areas li {
   transition: all 400ms cubic-bezier(.26,.52,.12,1.19);
   transform: translateZ(0);
   will-change: transform;
-}
-ol.areas li article{
-  opacity: 0;
-  transition: all 400ms cubic-bezier(.26,.52,.12,1.19) 0ms;
-  transform: translateY(100px);
-  position: relative;
+  overflow: hidden;
 }
 ol.areas li a{
   line-height: 48px;
@@ -101,18 +99,34 @@ ol.areas li a{
 ol.areas li.expanded {
   height: calc(100dvh - 280px);
 }
-ol.areas li.expanded a{
-  font-size: 32px;
-  line-height: 72px;
+ol.areas li.expanded a:first-child{
+  font-size: 24px;
+  line-height: 32px;
   position: relative;
+  margin-top: var(--grid-gap);
   transform: translate(0);
+}
+ol.areas li article{
+  opacity: 0;
+  transition: all 400ms cubic-bezier(.26,.52,.12,1.19) 0ms;
+  transform: translateY(100px);
+  position: absolute;
+  top: var(--grid-gap);
+  left: var(--grid-gap);
+  right:calc(var(--grid-gap));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: var(--grid-gap);
+  z-index: 10;
+}
+ol.areas li article div{
+  grid-column: 3 / span all;
+  padding-right: calc(var(--grid-gap) * 2);
 }
 ol.areas li.expanded article{
   opacity: 1;
   transform: translate(0);
-  column-count: 2;
-  position: absolute;
-  bottom: var(--grid-gap);
+  bottom: 0
 }
 ol.areas li.expanded article p{
   margin-bottom: var(--grid-gap-medium);
@@ -120,8 +134,10 @@ ol.areas li.expanded article p{
 ol.areas li a:first-child {
   text-decoration: none;
   color: var(--primary-color-inverted);
-  text-transform: lowercase;
+  text-transform: uppercase;
   cursor: crosshair;
+  font-weight: bold;
+  z-index: 1000000;
 }
 
 ol.areas li:last-child a{
@@ -157,6 +173,7 @@ ol.areas li span.icon {
   position: absolute;
   right: 0;
   top: 0;
+  
 }
 footer.subgrid-container {
   display: grid;
@@ -185,3 +202,68 @@ footer a {
   background-color: var(--primary-color);
   transition: width 0.5s;
 }
+/* Media querries  */
+/* Mobile */
+@media only screen and (max-width: 600px) {
+  :root {
+    /* Colors */
+    --grid-gap-small: 4px;
+    --grid-gap-medium: 8px;
+    --grid-gap: 16px;
+
+    --body: 0.9rem;
+    --caption: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  h1 {
+    font-size: 24px;
+    grid-column: 1 / span all;
+  }
+  h2.headline {
+    transform: rotate(-90deg);
+    transform-origin: left;
+    position: fixed;
+    bottom: 208px;
+    left: 54px;
+    grid-row: 1;
+    font-size: 110px;
+  }
+  .about {
+    font-size: 14px;
+  }
+  ol.areas li.expanded {
+    height: calc(100dvh - 250px);
+  }
+  ol.areas li.expanded a:first-child{
+    font-size: 20px;
+  }
+  ol.areas li.expanded article{
+    display: block;
+    margin-top: 48px;
+    overflow-y: scroll;
+    padding-top: 0;
+  }
+  ol.areas li.expanded article div{
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 600px) and (orientation: landscape) {
+  /* Styles */
+}
+/* Media querries  */
+/* Tablet */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  /* Styles */
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  /* Styles */
+}
+@media only screen and (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+    /* Styles */
+}
+
+
+

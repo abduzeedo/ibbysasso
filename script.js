@@ -19,17 +19,32 @@ function updateProgressBar(loaded, total) {
   }
 }
 function expand_collapse() {
+  var expanded = false
   var item = ""
   document.querySelectorAll("ol li a").forEach((item) => {
     item.addEventListener("click", function (event) {
       // Prevent default action if needed
       event.preventDefault();
-      // Toggle 'expanded' class on the parent <li> element
-      
-      if(!item.parentElement.classList.contains("expanded")){
+      //
+      if(item.parentElement.classList.contains("expanded")){
         clearExpansion()
       }
-      item.parentElement.classList.toggle("expanded");
+      else{
+        clearExpansion()
+        item.parentElement.classList.add("expanded");
+        document.querySelector(".about").style.opacity = 0;
+      }
+
+      
+      
+      // // Toggle 'expanded' class on the parent <li> element
+      // if(!item.parentElement.classList.contains("expanded")){
+      //   clearExpansion()
+      // }
+      // else{
+      //   expanded = false
+      // }
+      // item.parentElement.classList.toggle("expanded");
       
     });
   });
@@ -37,6 +52,7 @@ function expand_collapse() {
 function clearExpansion(){
     // Remove from previous
     document.querySelectorAll("ol li").forEach((item) => {
+        document.querySelector(".about").style.opacity = 1;
         item.classList.remove("expanded");
     })
 }
