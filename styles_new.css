@@ -4,15 +4,26 @@
   --grid-gap-medium: 16px;
   --grid-gap: 24px;
   --background: #f5eee7;
-  --primary-color: #000000;
+  --primary-color: #111;
   --primary-color-inverted: #fff;
   --color1: #6a205d;
   --color2: #b50851;
   --color3: #f3352c;
   --color4: #f7b101;
-
   --body: 0.9rem;
   --caption: 0.7rem;
+}
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111;
+    --primary-color: #fff;
+    --primary-color-inverted: #111;
+    --color1: #f7b101;
+    --color2: #f3352c;
+    --color3: #b50851;
+    --color4: #6a205d;
+  }
 }
 body {
   font-family: sans-serif;
@@ -22,6 +33,7 @@ body {
   line-height: 120%;
   -webkit-font-smoothing: antialiased;
   font-smooth: antialiased;
+  color: var(--primary-color);
 }
 .grid {
   display: grid;
@@ -30,17 +42,24 @@ body {
   grid-column-gap: var(--grid-gap);
   grid-row-gap: 0;
   padding: 0 24px;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
   max-width: 1280px;
-  height: 100dvh;
   margin: 0 auto;
   opacity: 0;
+}
+a{
+  color: var(--primary-color);
 }
 section.grid,
 footer.grid {
 }
 h1 {
   padding-top: var(--grid-gap);
+  color: var(--primary-color);
   grid-row: 1;
   font-size: 24px;
   line-height: 24px;
@@ -53,11 +72,12 @@ h1 {
   grid-column: 3 / span all;
   font-size: min(max(12px, 1.5vmin), 20px);
   line-height: 120%;
+  color: var(--primary-color);
 }
 h2.headline {
   grid-row: 2;
   grid-column: 1 / span all;
-
+  color: var(--primary-color);
   font-size: min(max(12px, 22vw), 260px);
   line-height: 100%;
   font-weight: bold;
@@ -188,6 +208,7 @@ footer.subgrid-container {
 }
 footer a {
   font-weight: bold;
+  color: var(--primary-color);
 }
 
 /* Loader */
@@ -221,14 +242,23 @@ footer a {
     font-size: 24px;
     grid-column: 1 / span all;
   }
-  h2.headline {
-    transform: rotate(-90deg);
-    transform-origin: left;
-    position: fixed;
-    bottom: 224px;
-    left: 48px;
+  h2.headline{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     grid-row: 1;
     font-size: 84px;
+    
+  }
+  h2.headline span{
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    position: absolute;
+    bottom: 184px;
+    left: -16px;
   }
   .about {
     font-size: 14px;
