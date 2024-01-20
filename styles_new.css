@@ -180,8 +180,8 @@ footer.subgrid-container {
   grid-template-columns: subgrid;
   grid-column: 1 / span all;
   grid-row: 4;
-  height: 48px;
-  line-height: 24px;
+  height: 32px;
+  line-height: 48px;
   bottom: 0;
   font-size: var(--caption);
   text-transform: lowercase;
