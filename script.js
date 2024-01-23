@@ -76,27 +76,36 @@ function animateLines(){
   // document.querySelectorAll("ol li").forEach((item) => {
   // }
   gsap.fromTo("h1, .about, h2", {
-    y:-200,
+    y:-100,
+    alpha: 0,
+  },{
+    y: 0,
+    alpha: 1,
+    duration: 1,
+    delay:.5,
+    ease: "back.out(1.7)",
+    stagger: 0.2// 0.1 seconds between when each ".box" element starts animating
+  });
+  // Get the width of the window
+  var windowWidth = window.innerWidth * -1;
+  gsap.fromTo("ol li", {
+    alpha: 0,
+  },{
+    x: 0,
+    alpha: 1,
+    duration: 1.5,
+    delay:1,
+    stagger: 0.2// 0.1 seconds between when each ".box" element starts animating
+  });
+  gsap.fromTo("footer p", {
+    y:50,
     alpha: 0,
   },{
     y: 0,
     alpha: 1,
     duration: .6,
-    delay:1,
+    delay:3,
     ease: "back.out(1.7)",
     stagger: 0.1// 0.1 seconds between when each ".box" element starts animating
-  });
-  // Get the width of the window
-  var windowWidth = window.innerWidth * -1;
-  gsap.fromTo("ol li", {
-    x: windowWidth * 2,
-    alpha: 0,
-  },{
-    x: 0,
-    alpha: 1,
-    duration: .3,
-    delay:1,
-    ease: "back.out(1.7)",
-    stagger: 0.2// 0.1 seconds between when each ".box" element starts animating
   });
 }

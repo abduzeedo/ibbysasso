@@ -104,8 +104,9 @@ ol.areas li {
   color: var(--primary-color-inverted);
   font-weight: 400;
   margin-bottom: 2px;
-  transition: all 600ms cubic-bezier(.26,.52,.12,1.19);
-  transform: translateZ(0);
+  transition: height 600ms cubic-bezier(.26,.52,.12,1.19);
+
+  transform: translateX(calc(100vw * -1));
   will-change: transform;
   overflow: hidden;
 }
