@@ -93,7 +93,7 @@ function animateLines(){
   },{
     x: 0,
     alpha: 1,
-    duration: 1.5,
+    duration: .8,
     delay:1,
     stagger: 0.2// 0.1 seconds between when each ".box" element starts animating
   });

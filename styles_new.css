@@ -191,8 +191,9 @@ ol.areas li.expanded a:first-child .icon{
 }
 ol.areas li.expanded span.title{
   max-width: 200px;
+  line-height: 110%;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: text-top;
 }
 ol.areas li span.icon {
   font-size: 24px;
@@ -277,7 +278,7 @@ footer a {
   }
   ol.areas li.expanded article{
     display: block;
-    margin-top: 48px;
+    margin-top: 72px;
     overflow-y: scroll;
     padding-top: 0;
   }
