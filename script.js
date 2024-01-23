@@ -19,24 +19,29 @@ function updateProgressBar(loaded, total) {
   }
 }
 function expand_collapse() {
-  var expanded = false
-  var item = ""
+  var expanded = false;
+  var item = "";
+  // grab state
+  //const state = Flip.getState(squares);
+
+  // Animate from the initial state to the end state
   document.querySelectorAll("ol li a").forEach((item) => {
+    //const state = Flip.getState(item.parentElement);
     item.addEventListener("click", function (event) {
       // Prevent default action if needed
+
       event.preventDefault();
-      //
-      if(item.parentElement.classList.contains("expanded")){
-        clearExpansion()
-      }
-      else{
-        clearExpansion()
+
+      if (item.parentElement.classList.contains("expanded")) {
+        clearExpansion();
+      } else {
+        clearExpansion();
         item.parentElement.classList.add("expanded");
+
         document.querySelector(".about").style.opacity = 0;
       }
+      //Flip.from(state, {duration: .6, ease: "back.out(1.7)"});
 
-      
-      
       // // Toggle 'expanded' class on the parent <li> element
       // if(!item.parentElement.classList.contains("expanded")){
       //   clearExpansion()
@@ -45,16 +50,15 @@ function expand_collapse() {
       //   expanded = false
       // }
       // item.parentElement.classList.toggle("expanded");
-      
     });
   });
 }
-function clearExpansion(){
-    // Remove from previous
-    document.querySelectorAll("ol li").forEach((item) => {
-        document.querySelector(".about").style.opacity = 1;
-        item.classList.remove("expanded");
-    })
+function clearExpansion() {
+  // Remove from previous
+  document.querySelectorAll("ol li").forEach((item) => {
+    document.querySelector(".about").style.opacity = 1;
+    item.classList.remove("expanded");
+  });
 }
 window.onload = function () {
   // This will hide the progress bar and show the content
@@ -64,5 +68,35 @@ window.onload = function () {
 };
 document.addEventListener("DOMContentLoaded", function () {
   // Adjust the interval time as needed
-  expand_collapse()
+  expand_collapse();
+  animateLines()
+
 });
+function animateLines(){
+  // document.querySelectorAll("ol li").forEach((item) => {
+  // }
+  gsap.fromTo("h1, .about, h2", {
+    y:-200,
+    alpha: 0,
+  },{
+    y: 0,
+    alpha: 1,
+    duration: .6,
+    delay:1,
+    ease: "back.out(1.7)",
+    stagger: 0.1// 0.1 seconds between when each ".box" element starts animating
+  });
+  // Get the width of the window
+  var windowWidth = window.innerWidth * -1;
+  gsap.fromTo("ol li", {
+    x: windowWidth * 2,
+    alpha: 0,
+  },{
+    x: 0,
+    alpha: 1,
+    duration: .3,
+    delay:1,
+    ease: "back.out(1.7)",
+    stagger: 0.2// 0.1 seconds between when each ".box" element starts animating
+  });
+}

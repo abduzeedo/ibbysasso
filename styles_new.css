@@ -104,7 +104,7 @@ ol.areas li {
   color: var(--primary-color-inverted);
   font-weight: 400;
   margin-bottom: 2px;
-  transition: all 400ms cubic-bezier(.26,.52,.12,1.19);
+  transition: all 600ms cubic-bezier(.26,.52,.12,1.19);
   transform: translateZ(0);
   will-change: transform;
   overflow: hidden;
@@ -187,6 +187,11 @@ ol.areas li a:first-child .icon{
 }
 ol.areas li.expanded a:first-child .icon{
   transform: rotate(45deg);
+}
+ol.areas li.expanded span.title{
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: top;
 }
 ol.areas li span.icon {
   font-size: 24px;
