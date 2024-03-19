@@ -103,9 +103,8 @@ ol.areas li {
   margin: 0 calc(var(--grid-gap) * -1);
   color: var(--primary-color-inverted);
   font-weight: 400;
-  margin-bottom: 2px;
+  margin-bottom: 0px;
   transition: height 600ms cubic-bezier(.26,.52,.12,1.19);
-
   transform: translateX(calc(100vw * -1));
   will-change: transform;
   overflow: hidden;
@@ -147,7 +146,8 @@ ol.areas li article div{
 ol.areas li.expanded article{
   opacity: 1;
   transform: translate(0);
-  bottom: 0
+  bottom: 0;
+  overflow-y: scroll;
 }
 ol.areas li.expanded article p{
   margin-bottom: var(--grid-gap-medium);
